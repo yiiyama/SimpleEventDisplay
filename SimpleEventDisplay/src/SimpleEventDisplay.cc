@@ -68,9 +68,6 @@ SimpleEventDisplay::showEvent(unsigned _eventNumber, reco::GenParticleCollection
     reco::GenParticle const& part(*pItr);
     if(part.status() != 1 || part.pt() < ptThreshold_) continue;
 
-    double eta(part.eta());
-    double phi(part.phi());
-
     TMarker marker;
 
     switch(std::abs(part.pdgId())){
@@ -105,7 +102,7 @@ SimpleEventDisplay::showEvent(unsigned _eventNumber, reco::GenParticleCollection
     }
     marker.SetMarkerSize(sizeNorm * TMath::Log10(part.pt()));
 
-    marker.DrawMarker(eta, phi);
+    marker.DrawMarker(part.eta(), part.phi());
   }
 
   return true;
